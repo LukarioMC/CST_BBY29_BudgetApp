@@ -2,108 +2,110 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
-    <meta name="comp1800 template" content="My 1800 App">
+  <title>My BCIT Project</title>
+  <meta name="comp1800 template" content="My 1800 App">
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap Library CSS CDN go here -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Bootstrap Library CSS CDN go here -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- Boostrap Library JS CDN  go here -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+  <!-- Boostrap Library JS CDN  go here -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
-    <!-- Firebase 8 Library related CSS CDN go here -->
-    <!-- Firebase 8 Library related JS CDN go here-->
+  <!-- Firebase 8 Library related CSS CDN go here -->
+  <!-- Firebase 8 Library related JS CDN go here-->
 
-    <!-- Other libraries go here -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Other libraries go here -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- Link to styles of your own -->
- <link rel="stylesheet" href="./styles/style.css">
-    
+  <!-- Link to styles of your own -->
+  <link rel="stylesheet" href="./styles/style.css">
+
 
 </head>
 
 <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
+  <!------------------------------>
+  <!-- Your HTML Layout go here -->
+  <!------------------------------>
 
-    <nav class="navbar navbar-light bg-info fixed-top">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a class="navbar-brand" href="#">Fudget</a>
-          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <span class="material-icons">account_circle</span>
-                        My Account
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <span class="material-icons">account_balance_wallet</span>
-                        My Budget
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <span class="material-icons">restaurant_menu</span>
-                        Restaurants
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">
-                        <span class="material-icons">savings</span>
-                        Hot Deals
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <span class="material-icons">shopping_basket</span>
-                        Your Cart
-                    </a>
-                </li>
-              </ul>
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
-            </div>
-          </div>
+  <nav class="navbar navbar-light bg-info fixed-top">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Fudget</a>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-      </nav>
-<!-- centered hero -->
-<div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4" src="./images/herologo.png" alt="" width="150" height="150">
-   <p id="appname">FUDGET</p>
-    <div class="card-group">
-      
-        <div class="card">
-          <img src="./images/moneyplate.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Eat Cheap with Fudget</h5>
-            <p class="card-text"><p>Based on your budget, our app will create a personalized itinerary of your meals with other filters in mind. </p>
-            <p class="card-text"><small class="text-muted">BBY-29&TRADE;</small></p>
-          </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="material-icons">account_circle</span>
+                My Account
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="material-icons">account_balance_wallet</span>
+                My Budget
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="material-icons">restaurant_menu</span>
+                Restaurants
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <span class="material-icons">savings</span>
+                Hot Deals
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="material-icons">shopping_basket</span>
+                Your Cart
+              </a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
         </div>
-       
       </div>
+    </div>
+  </nav>
+  <!-- centered hero -->
+  <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="./images/herologo.png" alt="" width="150" height="150">
+    <p id="appname">FUDGET</p>
+    <div class="card-group">
+      <div class="card">
+        <img src="./images/moneyplate.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Eat Cheap with Fudget</h5>
+          <p class="card-text">
+            Based on your budget, our app will create a personalized itinerary of your meals with other filters in mind.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">BBY-29&TRADE;</small>
+          </p>
+        </div>
+      </div>
+    </div>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
         <button type="button" class="btn btn-primary btn-lg btn-success px-4 gap-3">What's Your Budget?</button>
         <button type="button" class="btn btn-primary btn-danger px-4">Hot deal</button>
@@ -111,35 +113,35 @@
     </div>
   </div>
 
-    <!-- sticky footer -->
-    <div class="fixed-bottom py-3 bg-info">
-        <div class="container text-center">
-            <i class="material-icons">home</i>
-            <i class="material-icons">restaurant</i>
-            <i class="material-icons">monetization_on</i>
-            <i class="material-icons">shopping_cart</i>
-        </div>
+  <!-- sticky footer -->
+  <div class="fixed-bottom py-3 bg-info">
+    <div class="container text-center">
+      <i class="material-icons">home</i>
+      <i class="material-icons">restaurant</i>
+      <i class="material-icons">monetization_on</i>
+      <i class="material-icons">shopping_cart</i>
     </div>
+  </div>
 
-    <!-- copyright footer -->
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-muted">&copy; 2022 BCIT COMP1800</p>
-        <a href="/"
-            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-                <use xlink:href="#bootstrap" />
-            </svg>
-        </a>
-    </footer>
+  <!-- copyright footer -->
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-muted">&copy; 2022 BCIT COMP1800</p>
+    <a href="/"
+      class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32">
+        <use xlink:href="#bootstrap" />
+      </svg>
+    </a>
+  </footer>
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-    <!-- Link to API keys go here -->
-    <!-- <script src="./scripts/firebaseAPI_TEAM99.js"></script> -->
+  <!---------------------------------------------->
+  <!-- Your own JavaScript functions go here    -->
+  <!---------------------------------------------->
+  <!-- Link to API keys go here -->
+  <!-- <script src="./scripts/firebaseAPI_TEAM99.js"></script> -->
 
-    <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
+  <!-- Link to scripts of your own -->
+  <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
 
