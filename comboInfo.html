@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title id="pageTitle">Combo Details</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap Library CSS CDN go here -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!-- Boostrap Library JS CDN  go here -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-------------------------------------------------------->
+  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+  <!-------------------------------------------------------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+
+  <!-- Other libraries go here -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- Link to styles of your own -->
+  <link rel="stylesheet" href="./styles/style.css" />
+  <style>
+    .material-icons {
+      font-size: 250% !important;
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav id="navbarPlaceholder"></nav>
+
+  <!-- Combo Information -->
+  <article id="comboInfo" class="container">
+    <h1 id="comboName" class="row-fluid text-center py-2">Combo Name</h1>
+    <img src="./images/moneyplate.jpg" alt="" class="row-fluid img-fluid">
+    <div id="comboButtons" class="row text-center p-2">
+      <a href="#" id="shareButton" class="col-4"><span class="material-icons">share</span></a>
+      <a href="#" id="commentButton" class="col-4"><span class="material-icons">comment</span></a>
+      <a href="#" id="favouriteButton" class="col-4"><span class="material-icons">favorite_border</span></a>
+    </div>
+    <section id="includedItems" class="p-3">
+      <h2>Includes:</h2>
+      <div id="itemsPlaceholder">
+        <ul>
+          <li>
+            <span id="item1Amount">1</span>x <span id="item1Name">Food Item 1</span>
+          </li>
+          <li>
+            <span id="item2Amount">2</span>x <span id="item2Name">Food Item 2</span>
+          </li>
+          <li>
+            <span id="item3Amount">1</span>x <span id="item3Name">Food Item 3</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <hr class="m-0">
+    <section id="savingsPreview" class="container py-3">
+      <p class="d-flex text-center justify-content-evenly">
+        <strong>Originally: $<span id="originalPricePlaceholder">20.00</span></strong>
+        <strong><em>Now: $<span id="newPricePlaceholder">18.99</span></em></strong>
+      </p>
+      <h2 class="text-center">You Save: <span id="differencePercentPlaceHolder">5</span>%!</h2>
+    </section>
+  </article>
+
+  <!-- Footer Navigation -->
+  <nav id="footerPlaceholder"></nav>
+
+  <!---------------------------------------------->
+  <!-- Your own JavaScript functions go here    -->
+  <!---------------------------------------------->
+  <script src="./scripts/firebaseAPI_BBY29.js"></script>
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/script.js"></script>
+  <script src="./scripts/authentication.js"></script>
+</body>
+
+</html>
