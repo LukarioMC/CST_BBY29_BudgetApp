@@ -51,20 +51,23 @@ const discountCodeDB = [
 ];
 
 function dataGeneration() {
-  for (let i = 0; i < 9; i += 1) {
-    const index = Math.floor(Math.random() * (9 - i))
+  let j = resNameDB.length;
+  for (let i = 0; i < j; i += 1) {
+    const index = Math.floor(Math.random() * resNameDB.length)
     resName.push(resNameDB[index]);
     resNameDB.splice(index, 1);
   }
 
-  for (let i = 0; i < 9; i += 1) {
-    const index = Math.floor(Math.random() * (9 - i))
+  j = cuisineDB.length;
+  for (let i = 0; i < j; i += 1) {
+    const index = Math.floor(Math.random() * cuisineDB.length)
     cuisine.push(cuisineDB[index]);
     cuisineDB.splice(index, 1);
   }
 
-  for (let i = 0; i < 9; i += 1) {
-    const index = Math.floor(Math.random() * (9 - i))
+  j = discountCodeDB.length;
+  for (let i = 0; i < j; i += 1) {
+    const index = Math.floor(Math.random() * discountCodeDB.length)
     discountCode.push(discountCodeDB[index]);
     discountCodeDB.splice(index, 1);
   }
