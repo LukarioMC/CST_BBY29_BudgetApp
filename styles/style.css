@@ -3,7 +3,16 @@
 html{
 font-family: 'Fredoka One', cursive;
 }
+
 #appname {
     font-size:50pt;
     font-family: 'Fredoka One', cursive;
+}
+
+body {
+    padding-top: 4.5rem;
+}
+
+footer {
+    padding-bottom: 4.5rem;
 }
