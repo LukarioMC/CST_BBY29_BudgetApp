@@ -22,3 +22,34 @@ function insertName() {
   });
 }
 insertName();
+
+function populateCardsDynamically() {
+    let comboCardTemplate = document.getElementById("comboInfo");
+    let comboCardGroup = document.getElementById("comboCardGroup");
+    
+    db.collection("combos").get()
+        .then(allComobos => {
+            allCombos.forEach(doc => {
+                var hikeName = doc.data().actualPrice; //gets the name field
+
+                //start work here -sang
+
+                var hikeID = doc.data().id; //gets the unique ID field
+                var hikeLength = doc.data().length; //gets the length field
+                var hikeName = doc.data().name; //gets the name field
+                var hikeID = doc.data().id; //gets the unique ID field
+                var hikeLength = doc.data().length; //gets the length field
+                var hikeName = doc.data().name; //gets the name field
+                var hikeID = doc.data().id; //gets the unique ID field
+                var hikeLength = doc.data().length; //gets the length field
+                let testHikeCard = hikeCardTemplate.content.cloneNode(true);
+                testHikeCard.querySelector('.card-title').innerHTML = hikeName;
+                testHikeCard.querySelector('.card-length').innerHTML = hikeLength;
+                testHikeCard.querySelector('a').onclick = () => setHikeData(hikeID);
+                testHikeCard.querySelector('img').src = `./images/${hikeID}.jpg`;
+                hikeCardGroup.appendChild(testHikeCard);
+            })
+
+        })
+}
+populateCardsDynamically();
