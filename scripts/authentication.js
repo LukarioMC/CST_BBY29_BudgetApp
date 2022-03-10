@@ -29,9 +29,10 @@ var uiConfig = {
           console.log("Error adding new user: " + error);
         });
       } else {
-        return false;
+        // User was not new, instantly redirect them.
+        return true;
       }
-      // Return true if you'd like to instantly redirect to success Url
+      // Return false to let the database update.
       return false;
     },
     uiShown: function () {
