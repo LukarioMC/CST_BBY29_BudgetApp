@@ -15,32 +15,28 @@ var uiConfig = {
       // Before this works, you must enable "Firestore" from the firebase console.
       // The Firestore rules must allow the user to write. 
       //------------------------------------------------------------------------------------------
-      var user = authResult.user;                            // get the user object from the Firebase authentication database
-      if (authResult.additionalUserInfo.isNewUser) {         //if new user
-        db.collection("users").doc(user.uid).set({         //write to firestore. We are using the UID for the ID in users collection
-          name: user.displayName,                    //"users" collection
-          email: user.email                          //with authenticated user's ID (user.uid)
+      var user = authResult.user;                     // Get the user object from the Firebase authentication database
+      if (authResult.additionalUserInfo.isNewUser) {
+        db.collection("users").doc(user.uid).set({    // Write to firestore. We are using the users' UID for the document name.
+          name: user.displayName,                     // Sets the name in the DB to the users display name from auth
+          email: user.email
         }).then(function () {
           console.log("New user added to firestore");
-          window.location.assign("index.html");       //re-direct to main.html after signup
-        })
-          .catch(function (error) {
-            console.log("Error adding new user: " + error);
-          });
-      } else {
-        return true;
+        }).catch(function (error) {
+          console.log("Error adding new user: " + error);
+        });
       }
-      return false;
+      // Return true to redirect to success Url
+      return true;
     },
     uiShown: function () {
-      // The widget is rendered.
-      // Hide the loader.
+      // The widget is rendered, hide the loader.
       document.getElementById('loader').style.display = 'none';
     }
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: 'popup',
-  signInSuccessUrl: 'index.html', // TODO: It should be connected after Dakaro finished main page.
+  signInSuccessUrl: 'index.html',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
