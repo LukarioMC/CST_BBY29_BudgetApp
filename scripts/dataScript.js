@@ -2,6 +2,7 @@
 // Writes the data into Firebase. 
 
 /*
+Data Structure for reference
 
 “name” : “{Combo Name}”
     “details” : “{Description of combo}”
