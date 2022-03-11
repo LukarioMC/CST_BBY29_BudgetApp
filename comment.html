@@ -60,15 +60,16 @@
         <div class="col-10">
             <div class="comment-box ml-2">
                 <h4>Rate the value!</h4>
+                <h6><span id="name-goes-here">...</span></h6>
                 <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> </div>
-                <div class="comment-area"> <textarea class="form-control" placeholder="Share a comment!" rows="4"></textarea> </div>
+                <div class="comment-area"> <textarea class="form-control" id="comment" placeholder="Share a comment!" rows="4"></textarea> </div>
                 <div class="comment-btns mt-2">
                     <div class="row">
                         <div class="col-6">
                             <div class="pull-left"> <button class="btn btn-danger btn-sm">Cancel</button> </div>
                         </div>
                         <div class="col-6">
-                            <div class="pull-right"> <button class="btn btn-success send btn-sm">Post <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
+                            <div class="pull-right"> <button class="btn btn-success send btn-sm" onclick="submitComment()">Post <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
                         </div>
                     </div>
                 </div>
@@ -87,6 +88,7 @@
   <script src="./scripts/loadNavigation.js"></script>
   <script src="./scripts/dataScript.js"></script>
   <script src="./scripts/authentication.js"></script>
+  <script src="./scripts/main.js"></script>
 
 </body>
 
