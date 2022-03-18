@@ -38,10 +38,7 @@
   <nav id="navbarPlaceholder"></nav>
 
   <!-- App Name and Greeting -->
-  <div class="px-4 py-3 text-center">
-    <p id="appname">FUDGET&copy;</p>
-    <h2>Welcome, <span id="name-goes-here"></span>!</h2>
-  </div>
+  <div class="px-4 py-3 text-center"></div>
 
   <!-- Profile -->
   <div class="col-2"> <img src="./images/selfie.png" width="70" class="rounded-circle mt-2"> </div>
@@ -54,18 +51,22 @@
           <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
         </div>
         <div class="form-group">
-          <label>School</label>
-          <input type="text" id="schoolInput" class="form-control" placeholder="Enter your school">
+          <label>Main email address (not changeable)</label>
+          <input type="text" id="emailInput" class="form-control" placeholder="Enter your email address">
         </div>
         <div class="form-group">
-          <label>City</label>
-          <input type="text" id="cityInput" class="form-control" placeholder="Enter your city">
+          <label>Secondary email address</label>
+          <input type="text" id="subEmailInput" class="form-control" placeholder="Enter your email address">
+        </div>
+        <div class="form-group">
+          <label>Phone number</label>
+          <input type="text" id="phoneInput" class="form-control" placeholder="Enter your phone number">
         </div>
       </fieldset>
       <div class="d-flex justify-content-end mt-5">
-        <button type="button" class="btn btn-secondary">Edit</button>
+        <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
         <span style="width: 10px"></span>
-        <button type="button" class="btn btn-info">Save</button>
+        <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
       </div>
     </form>
   </div>
@@ -81,6 +82,7 @@
   <script src="./scripts/dataScript.js"></script>
   <!-- <script src="./scripts/authentication.js"></script> -->
   <script src="./scripts/main.js"></script>
+  <script src="./scripts/profile.js"></script>
 </body>
 
 </html>
