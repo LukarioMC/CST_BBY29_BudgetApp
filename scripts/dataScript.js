@@ -47,6 +47,7 @@ const discountCode = [];
 const discountRatio = [];
 const actualPrice = [];
 const discountedPrice = [];
+const comboName =[];
 
 const detailsDB = [
   'Ramen',
@@ -166,6 +167,19 @@ const discountRatioDB = [
   0.25
 ];
 
+const comboNameDB = [
+  'ComboA',
+  'ComboB',
+  'ComboC',
+  'ComboD',
+  'ComboE',
+  'ComboF',
+  'ComboG',
+  'ComboH',
+  'ComboI',
+  'ComboJ'
+];
+
 let arr = [];
 let arrDB = [];
 
@@ -182,10 +196,13 @@ function dataGeneration() {
   shuffle(details, detailsDB);
   shuffle(cuisine, cuisineDB);
   shuffle(resName, resNameDB);
+  shuffle(resAddr, resAddrDB);
+  shuffle(resTel, resTelDB);
+  shuffle(resWeb, resWebDB);
   shuffle(discountCode, discountCodeDB);
+  shuffle(actualPrice, actualPriceDB);
   shuffle(discountRatio, discountRatioDB);
-  shuffle(actualPrice, actualPriceDB);
-  shuffle(actualPrice, actualPriceDB);
+  shuffle(comboName, comboNameDB);
   // discounted price
   j = actualPrice.length;
   for (let i = 0; i < j; i += 1) {
