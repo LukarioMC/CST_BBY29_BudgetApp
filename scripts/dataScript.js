@@ -166,61 +166,32 @@ const discountRatioDB = [
   0.25
 ];
 
+let arr = [];
+let arrDB = [];
+
+function shuffle(arr, arrDB) {
+  let j = arrDB.length;
+  for (let i = 0; i < j; i += 1) {
+    const index = Math.floor(Math.random() * arrDB.length)
+    arr.push(arrDB[index]);
+    arrDB.splice(index, 1);
+  }
+}
+
 function dataGeneration() {
-  // details
-  let j = detailsDB.length;
-  for (let i = 0; i < j; i += 1) {
-    const index = Math.floor(Math.random() * detailsDB.length)
-    details.push(detailsDB[index]);
-    detailsDB.splice(index, 1);
-  }
-
-  // cusine
-  j = cuisineDB.length;
-  for (let i = 0; i < j; i += 1) {
-    const index = Math.floor(Math.random() * cuisineDB.length)
-    cuisine.push(cuisineDB[index]);
-    cuisineDB.splice(index, 1);
-  }
-
-  // resName
-  j = resNameDB.length;
-  for (let i = 0; i < j; i += 1) {
-    const index = Math.floor(Math.random() * resNameDB.length)
-    resName.push(resNameDB[index]);
-    resNameDB.splice(index, 1);
-  }
-
-  // discountCode
-  j = discountCodeDB.length;
-  for (let i = 0; i < j; i += 1) {
-    const index = Math.floor(Math.random() * discountCodeDB.length)
-    discountCode.push(discountCodeDB[index]);
-    discountCodeDB.splice(index, 1);
-  }
-
-  j = discountRatioDB.length;
-  for (let i = 0; i < j; i += 1) {
-    const index = Math.floor(Math.random() * discountRatioDB.length)
-    discountRatio.push(discountRatioDB[index]);
-    discountRatioDB.splice(index, 1);
-  }
-
-  // actual price
-  j = actualPriceDB.length;
-  for (let i = 0; i < j; i += 1) {
-    const index = Math.floor(Math.random() * actualPriceDB.length)
-    actualPrice.push(actualPriceDB[index]);
-    actualPriceDB.splice(index, 1);
-  }
-
+  shuffle(details, detailsDB);
+  shuffle(cuisine, cuisineDB);
+  shuffle(resName, resNameDB);
+  shuffle(discountCode, discountCodeDB);
+  shuffle(discountRatio, discountRatioDB);
+  shuffle(actualPrice, actualPriceDB);
+  shuffle(actualPrice, actualPriceDB);
   // discounted price
   j = actualPrice.length;
   for (let i = 0; i < j; i += 1) {
     let discounted = actualPrice[i] * discountRatio[i];
     discountedPrice.push(actualPrice[i] - discounted);
   }
-
   console.log(resName);
   console.log(discountCode);
   console.log(cuisine);
