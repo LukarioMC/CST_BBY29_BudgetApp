@@ -170,16 +170,16 @@ let discountRatioDB = [
 ];
 
 let comboNameDB = [
-  'ComboA',
-  'ComboB',
-  'ComboC',
-  'ComboD',
-  'ComboE',
-  'ComboF',
-  'ComboG',
-  'ComboH',
-  'ComboI',
-  'ComboJ'
+  'comboA',
+  'comboB',
+  'comboC',
+  'comboD',
+  'comboE',
+  'comboF',
+  'comboG',
+  'comboH',
+  'comboI',
+  'comboJ'
 ];
 
 let arr = [];
@@ -219,9 +219,12 @@ function dataGeneration() {
   console.log(discountedPrice);
 }
 
+// writeComboData
+// writes information into Firebase like below.
+// combos -> comboA -> data
 function writeComboData() {
   for (let i = 0; i < resName.length; i += 1) {
-    var dataRef = db.collection("combo").doc(comboName[i]); {
+    var dataRef = db.collection("combos").doc(comboName[i]); {
       // var dataRef2 = db.collection("combo").doc().collection(comboName[i]); {
       dataRef.set({
         details: details[i],
@@ -232,25 +235,16 @@ function writeComboData() {
         discountedPrice: discountedPrice[i],
         discountRatio: discountRatio[i],
       });
-
     }
   }
-  // for (let i = 0; i < resName.length; i += 1) {
-  //   dataRef.add({
-  //     details: details[i],
-  //     cuisine: cuisine[i],
-  //     restaurant: resName[i],
-  //     discountCode: discountCode[i],
-  //     actualPrice: actualPrice[i],
-  //     discountedPrice: discountedPrice[i],
-  //     discountRatio: discountRatio[i],
-  //   });
-  // }
 }
 
+// writeResData
+// writes information into Firebase like below.
+// restaurants -> Italiano -> data
 function writeResData() {
   for (let i = 0; i < resName.length; i += 1) {
-    var dataRef = db.collection("restaurant").doc(resName[i]); {
+    var dataRef = db.collection("restaurants").doc(resName[i]); {
       // var dataRef2 = db.collection("combo").doc().collection(comboName[i]); {
       dataRef.set({
         name: resName[i],
@@ -262,6 +256,42 @@ function writeResData() {
   }
 }
 
+// writeComboData2
+// writes information into Firebase like below.
+// combos -> UID -> data
+function writeComboData2() {
+  for (let i = 0; i < resName.length; i += 1) {
+    var dataRef = db.collection("combos"); {
+      // var dataRef2 = db.collection("combo").doc().collection(comboName[i]); {
+      dataRef.add({
+        details: details[i],
+        cuisine: cuisine[i],
+        restaurant: resName[i],
+        discountCode: discountCode[i],
+        actualPrice: actualPrice[i],
+        discountedPrice: discountedPrice[i],
+        discountRatio: discountRatio[i],
+      });
+    }
+  }
+}
+
+// writeResData2
+// writes information into Firebase like below.
+// restaurants -> Italiano -> data
+function writeResData2() {
+  for (let i = 0; i < resName.length; i += 1) {
+    var dataRef = db.collection("restaurants"); {
+      // var dataRef2 = db.collection("combo").doc().collection(comboName[i]); {
+      dataRef.add({
+        name: resName[i],
+        address: resAddr[i],
+        website: resWeb[i],
+        telephone: resTel[i]
+      });
+    }
+  }
+}
 
 // function writeComment() {
 //   firebase.auth().onAuthStateChanged(user => {
