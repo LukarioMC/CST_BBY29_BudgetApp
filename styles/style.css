@@ -12,3 +12,30 @@ body {
 footer {
     padding-bottom: 4.5rem;
 }
+
+nav span {
+    vertical-align: bottom;
+}
+
+.offcanvas-start {
+    width: auto;
+}
+
+.navbar-toggler {
+    border: 0px;
+}
+
+.square-img {
+    height: 30vw;
+    width: 30vw;
+    background-size: cover;
+    background-position: center;
+}
+
+#comboGallery .card{
+    flex-direction: row;
+}
+
+#comboGallery .card,.container {
+    padding: 0px;
+}
