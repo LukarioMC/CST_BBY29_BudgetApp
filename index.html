@@ -45,22 +45,20 @@
 
   <!-- Combo Recommendations Inserted Here -->
   <div class="container">
-    <div class="card-group col-md-8 col-lg-6 mx-auto">
-      <div class="card" id="cardTemplate">
-        <h5 class="card-header text-center">Combo Recommendation #1</h5>
-        <img src="./images/moneyplate.jpg" class="card-img" alt="Photo of Combo Items">
-        <div class="card-body">
-          <p class="card-text">
-            Description of combo contents go here.
-          </p>
-        </div>
-        <div class="card-footer d-grid w-100 p-0">
-          <div class="row m-0">
-            <button type="button" class="btn btn-secondary col-6">More Details</button>
-            <button type="button" class="btn btn-primary col-6">Show Code</button>
+    <div id="comboCardGroup" class="card-group col-md-8 col-lg-6 mx-auto">
+      <template id="cardTemplate">
+        <div class="card">
+          <h2 class="card-header text-center">Combo Recommendation #1</h2>
+          
+          <img src="./images/moneyplate.jpg" class="card-img" alt="Photo of Combo Items">
+          <div class="card-footer d-grid w-100 p-0">
+            <div class="row m-0">
+              <a type="button" class="btn col-6 rounded-0 btn-secondary">More Details</a>
+              <a type="button" class="btn col-6 rounded-0 btn-primary">Show Code</a>
+            </div>
           </div>
         </div>
-      </div>
+      </template>
     </div>
   </div>
 

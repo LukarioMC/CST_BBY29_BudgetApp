@@ -1,26 +1,26 @@
-function insertName() {
+// Calls functions once the document is ready and fully loaded.
+ready(function() {
+    
+    // Insert functions relating to the state of the currently logged in user below.
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
         if (user) {
-            // Do something for the current logged-in user here: 
-            console.log(user.uid);
-            //go to the correct user document by referencing to the user uid
-            currentUser = db.collection("users").doc(user.uid);
-            //get the document for current user.
-            currentUser.get()
-                .then(userDoc => {
-                    var user_Name = userDoc.data().name;
-                    //method #1:  insert with html only
-                    //document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
-                    //method #2:  insert using jquery
-                    $("#name-goes-here").text(user_Name); //using jquery
-                })
+            let userDocRef = db.collection("users").doc(user.uid);
+            
+            // Get the document for the currently logged in users from firestore.
+            userDocRef.get().then(userDoc => {
+                $("#name-goes-here").text(userDoc.data().name); // Insert name
+                populateUserCards(userDoc);
+            });
         } else {
-            // No user is signed in.
+            // No user is signed in
+            
+            // hideWelcome();
+            populateGenericCards();
         }
     });
-}
-insertName();
+});
+
 
 function submitComment() {
     console.log("in")
@@ -31,35 +31,53 @@ function submitComment() {
     })
 }
 
+// Dynamically populates cards based on if the user is logged in or not.
+function populateUserCards(userDoc) {
+    let comboCardTemplate = document.getElementById("comboInfo");
+    let comboCardGroup = document.getElementById("comboCardGroup");
+    var userBudget = userDoc.data().budget;
 
-
-    function populateCardsDynamically() {
-        let comboCardTemplate = document.getElementById("comboInfo");
-        let comboCardGroup = document.getElementById("comboCardGroup");
-
-        db.collection("combos").get()
-            .then(allComobos => {
-                allCombos.forEach(doc => {
-                    var hikeName = doc.data().actualPrice; //gets the name field
-
-                    //start work here -sang
-
-                    var hikeID = doc.data().id; //gets the unique ID field
-                    var hikeLength = doc.data().length; //gets the length field
-                    var hikeName = doc.data().name; //gets the name field
-                    var hikeID = doc.data().id; //gets the unique ID field
-                    var hikeLength = doc.data().length; //gets the length field
-                    var hikeName = doc.data().name; //gets the name field
-                    var hikeID = doc.data().id; //gets the unique ID field
-                    var hikeLength = doc.data().length; //gets the length field
-                    let testHikeCard = hikeCardTemplate.content.cloneNode(true);
-                    testHikeCard.querySelector('.card-title').innerHTML = hikeName;
-                    testHikeCard.querySelector('.card-length').innerHTML = hikeLength;
-                    testHikeCard.querySelector('a').onclick = () => setHikeData(hikeID);
-                    testHikeCard.querySelector('img').src = `./images/${hikeID}.jpg`;
-                    hikeCardGroup.appendChild(testHikeCard);
-                })
-
-            })
+    console.log(userBudget);
+    if (userBudget > 0) {
+        db.collection("combos").where("discountedPrice", "<", userBudget).get();
+        console.log("Budget was greater than 0!");
     }
-    populateCardsDynamically();
+    populateGenericCards(); // Test Call
+
+}
+
+// Populates 3 random combos on landing page as if a user isn't logged in.
+function populateGenericCards() {
+    let containerElement = document.getElementById("comboCardGroup");
+    
+    db.collection("combos").limit(3).get() //.orderBy("random")
+        .then(allCombos => {
+            console.log("Echo!");
+            allCombos.forEach(doc => {
+                const data = doc.data();
+                let comboID = doc.id;           // Gets the combo ID
+                let comboTitle = data.details;  // Gets the combo title
+                let price = data.discountedPrice; 
+                
+                console.log("Echo!");
+                let comboCardTemplate = document.getElementById("cardTemplate").content.cloneNode(true);
+                comboCardTemplate.querySelector(".card-header").innerText = comboTitle;
+                comboCardTemplate.querySelector(".card").setAttribute("id", comboID);
+                comboCardTemplate.querySelectorAll("a")[0].href = "comboInfo.html?id=" + comboID;
+                // To add in future if we get upload working in time.
+                // comboCardTemplate.querySelector('img').src = `./images/${comboID}.jpg`;
+                
+                containerElement.appendChild(comboCardTemplate);
+            });
+        });
+}
+
+function ready(callback) {
+    if (document.readyState != "loading") {
+        callback();
+        // console.log(document.readyState);
+    } else {
+        document.addEventListener("DOMContentLoaded", callback);
+        // console.log("Listener was invoked");
+    }
+}
