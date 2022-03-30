@@ -43,28 +43,28 @@
 
 
 
-   <template id="comboInfo">
-        <div class="card">
-            <img class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">placeholder</h5>
-                <p class="card-length">placeholder</p>
-                <a href="comment.html" class="link-primary">Write a comment</a>
-                <br>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
-                </p>
-                <a href="#" class="btn btn-primary" style="float: right">Read more</a>
-            </div>
-        </div>
-    </template>
-`
-        <div class="container">
-          <div id="comboDisplay" class="row row-cols-auto">
-          </div>
+  <template id="comboInfo">
+    <div class="card">
+      <img class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">placeholder</h5>
+        <p class="card-length">placeholder</p>
+        <a href="comment.html" class="link-primary">Write a comment</a>
+        <br>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
+        </p>
+        <a href="#" class="btn btn-primary" style="float: right">Read more</a>
       </div>
-  
+    </div>
+  </template>
 
-  
+  <div class="container">
+    <div id="comboDisplay" class="row row-cols-auto">
+    </div>
+  </div>
+
+
+
   <!-- Combo Information -->
 
   <!-- TO DO 
@@ -75,28 +75,24 @@
 
   remove hours of operation and match database variable names
   -->
-  <article id="comboInfo" class="container">
-    <h1 id="comboName" class="row-fluid text-center py-2">Combo Name</h1>
-    <img src="./images/moneyplate.jpg" alt="" class="row-fluid img-fluid">
-    <div id="comboButtons" class="row text-center p-2">
-      <a href="#" id="shareButton" class="col-4"><span class="material-icons">share</span></a>
-      <a href="#" id="commentButton" class="col-4"><span class="material-icons">comment</span></a>
-      <a href="#" id="favouriteButton" class="col-4"><span class="material-icons">favorite_border</span></a>
-    </div>
-    <section id="includedItems" class="p-3">
-      <h2>Includes:</h2>
-      <div id="itemsPlaceholder">
-            <span id="details">Combo description</span>
+  <article id="comboInfo" class="container-fluid">
+    <div class="col col-md-7 mx-auto">
+      <h1 id="comboName" class="row-fluid text-center py-2">Combo Name</h1>
+      <img src="./images/moneyplate.jpg" alt="" class="row-fluid img-fluid">
+      <div id="comboButtons" class="row text-center p-2">
+        <a href="#" id="shareButton" class="col-4"><span class="material-icons">share</span></a>
+        <a href="comment.html" id="commentButton" class="col-4"><span class="material-icons">comment</span></a>
+        <a href="#" id="favouriteButton" class="col-4"><span class="material-icons">favorite_border</span></a>
       </div>
-    </section>
-    <hr class="m-0">
-    <section id="savingsPreview" class="container py-3">
-      <p class="d-flex text-center justify-content-evenly">
-        <strong>Originally: $<span id="originalPricePlaceholder">20.00</span></strong>
-        <strong><em>Now: $<span id="newPricePlaceholder">18.99</span></em></strong>
-      </p>
-      <h2 class="text-center text-danger">You Save: <span id="differencePercentPlaceHolder">5</span>%!</h2>
-    </section>
+      <hr class="m-0">
+      <section id="savingsPreview" class="container py-3">
+        <p class="d-flex text-center justify-content-evenly">
+          <strong>Originally: $<span id="originalPricePlaceholder">20.00</span></strong>
+          <strong><em>Now: $<span id="newPricePlaceholder">18.99</span></em></strong>
+        </p>
+        <h2 class="text-center text-danger">You Save: <span id="differencePercentPlaceHolder">5</span>%!</h2>
+      </section>
+    </div>
   </article>
 
   <article id="restaurantInfo" class="w-100 bg-dark text-white p-3">
@@ -108,9 +104,6 @@
         </li>
         <li>Address: <span id="addressPlaceholder">1234 Blueberry Drive, Mission BC, V2V 3M6</span></li>
         <li>Tel: <a href="tel:+613-555-0155">613- 555-0155</a></li>
-        <li>
-          
-        </li>
       </ul>
     </address>
   </article>
