@@ -221,12 +221,12 @@ function dataGeneration() {
 
 // writeComboData
 // writes information into Firebase like below.
-// combos -> comboA -> data
+// combos -> UID -> data
 function writeComboData() {
   for (let i = 0; i < resName.length; i += 1) {
-    var dataRef = db.collection("combos").doc(comboName[i]); {
+    var dataRef = db.collection("combos"); {
       // var dataRef2 = db.collection("combo").doc().collection(comboName[i]); {
-      dataRef.set({
+      dataRef.add({
         details: details[i],
         cuisine: cuisine[i],
         restaurant: resName[i],
@@ -244,43 +244,6 @@ function writeComboData() {
 // restaurants -> Italiano -> data
 function writeResData() {
   for (let i = 0; i < resName.length; i += 1) {
-    var dataRef = db.collection("restaurants").doc(resName[i]); {
-      // var dataRef2 = db.collection("combo").doc().collection(comboName[i]); {
-      dataRef.set({
-        name: resName[i],
-        address: resAddr[i],
-        website: resWeb[i],
-        telephone: resTel[i]
-      });
-    }
-  }
-}
-
-// writeComboData2
-// writes information into Firebase like below.
-// combos -> UID -> data
-function writeComboData2() {
-  for (let i = 0; i < resName.length; i += 1) {
-    var dataRef = db.collection("combos"); {
-      // var dataRef2 = db.collection("combo").doc().collection(comboName[i]); {
-      dataRef.add({
-        details: details[i],
-        cuisine: cuisine[i],
-        restaurant: resName[i],
-        discountCode: discountCode[i],
-        actualPrice: actualPrice[i],
-        discountedPrice: discountedPrice[i],
-        discountRatio: discountRatio[i],
-      });
-    }
-  }
-}
-
-// writeResData2
-// writes information into Firebase like below.
-// restaurants -> Italiano -> data
-function writeResData2() {
-  for (let i = 0; i < resName.length; i += 1) {
     var dataRef = db.collection("restaurants"); {
       // var dataRef2 = db.collection("combo").doc().collection(comboName[i]); {
       dataRef.add({
@@ -292,30 +255,3 @@ function writeResData2() {
     }
   }
 }
-
-// function writeComment() {
-//   firebase.auth().onAuthStateChanged(user => {
-//     // Check if user is signed in:
-//     if (user) {
-//       // Do something for the current logged-in user here: 
-//       console.log(user.uid);
-//       //go to the correct user document by referencing to the user uid
-//       currentUser = db.collection("users").doc(user.uid);
-//       //get the document for current user.
-//       currentUser.get()
-//         .then(userDoc => {
-//           var user_Name = userDoc.data().name;
-//           console.log(user_Name);
-//           //method #1:  insert with html only
-//           //document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
-//           //method #2:  insert using jquery
-//           console.log(user.uid);
-
-//           // TO DO: code for writing comments data into Firebase using UID data above.
-//         })
-//     } else {
-//       alert("No user is signed in.");
-//       // No user is signed in.
-//     }
-//   });
-// }
