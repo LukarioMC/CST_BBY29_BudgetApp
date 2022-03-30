@@ -8,26 +8,14 @@ body {
 body {
     display: grid;
     place-items: center;
-    font-family: 'Manrope', sans-serif;
-    background: white
+    background: white;
 }
 
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
     padding: 20px;
     width: 450px;
-    word-wrap: break-word;
+    font-family: 'Manrope', sans-serif;
     background-color: rgb(247, 170, 247);
-    background-clip: border-box;
-    border-radius: 6px;
-    -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1)
-}
-
-.comment-box {
-    padding: 5px
 }
 
 .comment-area textarea {
@@ -41,18 +29,6 @@ body {
     border-color: #ffffff;
     outline: 0;
     box-shadow: 0 0 0 1px rgb(255, 0, 0) !important
-}
-
-.send {
-    color: #fff;
-    background-color: green;
-    border-color: green
-}
-
-.send:hover {
-    color: #fff;
-    background-color: blue;
-    border-color: blue
 }
 
 .rating {
