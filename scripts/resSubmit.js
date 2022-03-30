@@ -29,3 +29,25 @@ function submitComboInfo() {
         discountRatio: RegularPrice / DiscountPrice
     });
 }
+
+function clickUpload() {
+    let file = document.getElementById("picUpload").files[0];
+    console.log(file + " will be uploaded.");
+    // let storageRef = firebase.storage().ref(fileName);
+    // let uploadTask = storageRef.put(fileName);
+    
+    firebase.storage().ref(file.name).put(file)
+    .then(snapshot => {
+        console.log('Uploaded.');
+    });
+    
+    // console.log(fileName);
+    
+    // var storage = firebase.storage().ref("/image");
+
+    // //upload file
+    // var upload = storage.put(fileName);
+
+
+
+}
