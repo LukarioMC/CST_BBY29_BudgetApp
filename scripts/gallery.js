@@ -20,14 +20,14 @@ db.collection("combos").get()
 
 function createCard(doc) {
   let currentCombo = doc.data();
-  // TODO Replace "moneyplate" with ${doc.id} so we can retrieve each image as the combo ID
+  // TODO Replace "moneyplate.jpg" with ${doc.id} so we can retrieve each image as the combo ID
   let card =
-    `<div class="card m-lg-5 align-items-center">
+    `<a href="comboInfo.html?id=${doc.id}" class="card m-lg-5 align-items-center">
       <div class="square-img" style="background-image: url('images/moneyplate.jpg');"></div>
       <div class="d-flex flex-column p-3 w-50">
         <h3 class="combo-name">${currentCombo.details}</h2>
         <p>${currentCombo.restaurant}</p>
       </div>
-    </div>`;
+    </a>`;
   document.getElementById("comboGallery").innerHTML += card;
 }
