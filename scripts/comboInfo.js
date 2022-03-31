@@ -21,7 +21,7 @@ function updateComboInfo() {
       document.getElementById('restaurantInfoPlaceholder').innerHTML = restaurant;
     })
 
-  var delayInMilliseconds = 2000; //2 second
+  var delayInMilliseconds = 1000; //1 second delay
 
   setTimeout(function () {
     console.log("restaurant");
