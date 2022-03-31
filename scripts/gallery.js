@@ -1,9 +1,13 @@
+//=============================================================================
+// Gets the combo documents from the database, then calls the appropriate 
+// function to create the correct cards. (Incomplete, favourites not implemented)
+//=============================================================================
 db.collection("combos").orderBy("actualPrice").get()
   .then(allCombos => {
     firebase.auth().onAuthStateChanged(function (user) {
-      // Get the users favourites
-      if (user && window.location.search == "?id=" + user.uid) {
-        // User is signed in and properly directed.
+      let urlParams = new URLSearchParams(window.location.search);
+      if (user && urlParams.get("id") == user.uid) {
+        // User is signed in and was properly directed.
         
         // TODO Get users favourite combos
         allCombos.forEach(doc => {
@@ -18,9 +22,13 @@ db.collection("combos").orderBy("actualPrice").get()
     });
   });
 
+//=============================================================================
+// Creates a new card, populated with the passed in documents data from the 
+// database. Contains placeholder image, which is replaced by the appropriate 
+// image from cloud storage.
+//=============================================================================
 function createCard(doc) {
   let currentCombo = doc.data();
-  // TODO Replace "moneyplate.jpg" with ${doc.id} so we can retrieve each image as the combo ID
   let imgUrl = "./images/moneyplate.jpg";
   if (currentCombo.image != null) {
     imgUrl = currentCombo.image;

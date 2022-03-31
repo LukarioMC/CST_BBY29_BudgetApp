@@ -1,7 +1,8 @@
-// Calls functions once the document is ready and fully loaded.
+//=============================================================================
+// Calls these functions once the document is ready and fully loaded.
+// Insert functions relating to the state of the currently logged in user below.
+//=============================================================================
 ready(function() {
-    
-    // Insert functions relating to the state of the currently logged in user below.
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
         if (user) {
@@ -21,17 +22,10 @@ ready(function() {
     });
 });
 
-
-function submitComment() {
-    console.log("in")
-    let Comment = document.getElementById("comment").value;
-    console.log(Comment);
-    db.collection("comments").add({
-        comment: Comment
-    })
-}
-
-// Dynamically populates cards based on if the user is logged in or not.
+//=============================================================================
+// Dynamically populates cards based on if the user is logged in or not. Called
+// when document is ready and user is logged in.
+//=============================================================================
 function populateUserCards(userDoc) {
     let comboCardTemplate = document.getElementById("comboInfo");
     let comboCardGroup = document.getElementById("comboCardGroup");
@@ -42,11 +36,14 @@ function populateUserCards(userDoc) {
         db.collection("combos").where("discountedPrice", "<", userBudget).get();
         console.log("Budget was greater than 0!");
     }
-    populateGenericCards(); // Test Call
+    populateGenericCards(); // Test Call, implement combos from budget later.
 
 }
 
+//=============================================================================
 // Populates 3 random combos on landing page as if a user isn't logged in.
+// Called when the document is ready and a user isn't logged in.
+//=============================================================================
 function populateGenericCards() {
     let containerElement = document.getElementById("comboCardGroup");
     
@@ -58,7 +55,6 @@ function populateGenericCards() {
                 let comboTitle = data.details;  // Gets the combo title
                 let price = data.discountedPrice; 
                 
-                // console.log("Echo!");
                 let comboCardTemplate = document.getElementById("cardTemplate").content.cloneNode(true);
                 comboCardTemplate.querySelector(".card-header").innerText = comboTitle;
                 comboCardTemplate.querySelector(".card").setAttribute("id", comboID);
@@ -72,6 +68,11 @@ function populateGenericCards() {
         });
 }
 
+
+//=============================================================================
+// Generic document ready callback function. Calls the passed in callback once
+// the document is completely loaded.
+//=============================================================================
 function ready(callback) {
     if (document.readyState != "loading") {
         callback();

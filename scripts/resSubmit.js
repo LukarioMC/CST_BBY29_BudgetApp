@@ -1,3 +1,6 @@
+//=============================================================================
+// On page load, prevent default form submission and handle it ourselves.
+//=============================================================================
 $("document").ready(() => {
     $("#comboForm").submit(e => {
         e.preventDefault();
@@ -5,6 +8,10 @@ $("document").ready(() => {
     });
 });
 
+//=============================================================================
+// Submits combo details from the form to the database. Called when the combo
+// form is filled with required fields, and submitted.
+//=============================================================================
 function submitComboInfo() {
     // console.log("in");
     let Restaurant = document.getElementById("restName").value;
@@ -40,6 +47,11 @@ function submitComboInfo() {
     });
 }
 
+//=============================================================================
+// Test function left in to test uploading images to cloud firestore. Image is
+// stored as the given image name, under the image folder. Called by test 
+// upload button.
+//=============================================================================
 function clickUpload() {
     // Get the current reference
     let storageRef = firebase.storage().ref("/image/");
@@ -55,14 +67,17 @@ function clickUpload() {
     });
 }
 
+//=============================================================================
+// Uploads an image from the 'upload file' field to cloud firestore as the 
+// passed in comboID. Called by submitComboInfo once a combo document has been
+// created.
+//=============================================================================
 function uploadComboImage(comboID) {
     // Get the current reference to the firebase storage.
     let storageRef = firebase.storage().ref("/image/");
 
     let uploadElement = document.getElementById("picUpload");   // Gets the upload field
     let fileBlob = uploadElement.files[0];                      // Gets the first file
-    // let fileName = comboID;
-    // console.log(fileName);
     let fileRef = storageRef.child(comboID);                    // Store the image under the comboID
 
     // console.log(fileRef.name + " will be uploaded.");
@@ -70,11 +85,13 @@ function uploadComboImage(comboID) {
     fileRef.put(fileBlob).then(() => {
         console.log(fileRef.name + " was uploaded!");
         fileRef.getDownloadURL()
-            .then(function (url) { // Get URL of the uploaded file
-                console.log(url); // Save the URL into users collection
+            // Get URL of the uploaded file
+            .then(function (url) { 
+                // Save the URL into users collection
                 db.collection("combos").doc(comboID).update({
                     "image": url
                 });
+                // console.log(url);
             })
     });
 }

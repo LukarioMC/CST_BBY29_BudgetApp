@@ -1,3 +1,10 @@
+// Populates the users information in the form
+populateInfo();
+
+//=============================================================================
+// Populates form fields with the current users information. Called on page 
+// load.
+//=============================================================================
 function populateInfo() {
   firebase.auth().onAuthStateChanged(user => {
     // Check if user is signed in:
@@ -6,8 +13,7 @@ function populateInfo() {
       //go to the correct user document by referencing to the user uid
       currentUser = db.collection("users").doc(user.uid)
       //get the document for current user.
-      currentUser.get()
-        .then(userDoc => {
+      currentUser.get().then(userDoc => {
           //get the data fields of the user
           var userName = userDoc.data().name;
           var userEmail = userDoc.data().email;
@@ -27,7 +33,7 @@ function populateInfo() {
           if (userPhone != null) {
             document.getElementById("phoneInput").value = userPhone;
           }
-        })
+        });
     } else {
       // No user is signed in.
       console.log("No user is signed in");
@@ -35,20 +41,26 @@ function populateInfo() {
   });
 }
 
-//call the function to run it 
-populateInfo();
-
+//=============================================================================
+// Enables the personal info fields to be editable, called when user clicks on
+// the "edit" button.
+//=============================================================================
 function editUserInfo() {
   //Enable the form fields
   document.getElementById('personalInfoFields').disabled = false;
   document.getElementById('emailInput').disabled = true;
 }
 
+//=============================================================================
+// Saves the personal info fields for the current user, and disables form
+// fields to prevent user edits. Calls when user clicks on the "save" button.
+//=============================================================================
 function saveUserInfo() {
-  userName = document.getElementById('nameInput').value; //get the value of the field with id="nameInput"
-  userEmail = document.getElementById('emailInput').value; //get the value of the field with id="schoolInput"
-  userSubEmail = document.getElementById('subEmailInput').value; //get the value of the field with id="schoolInput"
-  userPhone = document.getElementById('phoneInput').value; //get the value of the field with id="cityInput"
+  userName = document.getElementById('nameInput').value;
+  userEmail = document.getElementById('emailInput').value;
+  // Secondary email allowed to be edited to avoid the "reset login" authentication process.
+  userSubEmail = document.getElementById('subEmailInput').value;
+  userPhone = document.getElementById('phoneInput').value;
   currentUser.update({
       name: userName,
       email: userEmail,
