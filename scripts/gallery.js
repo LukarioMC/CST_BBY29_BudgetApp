@@ -1,4 +1,4 @@
-db.collection("combos").get()
+db.collection("combos").orderBy("actualPrice").get()
   .then(allCombos => {
     firebase.auth().onAuthStateChanged(function (user) {
       // Get the users favourites
