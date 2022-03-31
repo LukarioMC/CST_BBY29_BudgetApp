@@ -2,7 +2,7 @@
 // Gets the combo documents from the database, then calls the appropriate 
 // function to create the correct cards. (Incomplete, favourites not implemented)
 //=============================================================================
-db.collection("combos").orderBy("actualPrice").get()
+db.collection("combos").orderBy("discountedPrice").get()
   .then(allCombos => {
     firebase.auth().onAuthStateChanged(function (user) {
       let urlParams = new URLSearchParams(window.location.search);
@@ -37,9 +37,12 @@ function createCard(doc) {
   let card =
     `<a href="comboInfo.html?id=${doc.id}" class="card m-lg-5 align-items-center">
       <div class="square-img" style="background-image: url('${imgUrl}');"></div>
-      <div class="d-flex flex-column p-3 w-50">
+      <div class="col d-flex flex-column p-3">
         <h3 class="combo-name">${currentCombo.details}</h2>
         <p>${currentCombo.restaurant}</p>
+      </div>
+      <div class="col text-end px-4">
+        <h3 class="combo-price text-success">$${currentCombo.discountedPrice.toFixed(2)}</h2>
       </div>
     </a>`;
   document.getElementById("comboGallery").innerHTML += card;

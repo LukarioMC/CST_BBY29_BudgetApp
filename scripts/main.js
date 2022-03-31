@@ -53,10 +53,11 @@ function populateGenericCards() {
                 const data = doc.data();
                 let comboID = doc.id;           // Gets the combo ID
                 let comboTitle = data.details;  // Gets the combo title
-                let price = data.discountedPrice; 
+                let price = data.discountedPrice.toFixed(2); 
                 
                 let comboCardTemplate = document.getElementById("cardTemplate").content.cloneNode(true);
                 comboCardTemplate.querySelector(".card-header").innerText = comboTitle;
+                comboCardTemplate.querySelector(".card .placeholder").innerText = price;
                 comboCardTemplate.querySelector(".card").setAttribute("id", comboID);
                 comboCardTemplate.querySelectorAll("a")[0].href = "comboInfo.html?id=" + comboID;
                 if (data.image != null) {
