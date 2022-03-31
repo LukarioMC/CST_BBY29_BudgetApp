@@ -16,23 +16,13 @@ function updateComboInfo() {
         .then(userDoc => {
           //get the data fields of the user
           var details = userDoc.data().details;
-          var userEmail = userDoc.data().email;
-          var userSubEmail = userDoc.data().subemail;
-          var userPhone = userDoc.data().phone;
+          var actualPrice = userDoc.data().actualPrice;
+          var discountedPrice = userDoc.data().discountedPrice;
+          var discountRatio = userDoc.data().discountRatio;
           document.getElementById('comboName').innerHTML = details;
-          //if the data fields are not empty, then write them in to the form.
-          // if (userName != null) {
-          //   document.getElementById("nameInput").value = userName;
-          // }
-          // if (userEmail != null) {
-          //   document.getElementById("emailInput").value = userEmail;
-          // }
-          // if (userSubEmail != null) {
-          //   document.getElementById("subEmailInput").value = userSubEmail;
-          // }
-          // if (userPhone != null) {
-          //   document.getElementById("phoneInput").value = userPhone;
-          // }
+          document.getElementById('originalPricePlaceholder').innerHTML = actualPrice;
+          document.getElementById('newPricePlaceholder').innerHTML = discountedPrice;
+          document.getElementById('differencePercentPlaceHolder').innerHTML = discountRatio * 100;
         })
     } else {
       // No user is signed in.
