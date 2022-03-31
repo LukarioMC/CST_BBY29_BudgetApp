@@ -239,14 +239,10 @@ function writeComboData() {
   }
 }
 
-// writeResData
-// writes information into Firebase like below.
-// restaurants -> Italiano -> data
 function writeResData() {
   for (let i = 0; i < resName.length; i += 1) {
-    var dataRef = db.collection("restaurants"); {
-      // var dataRef2 = db.collection("combo").doc().collection(comboName[i]); {
-      dataRef.add({
+    var dataRef = db.collection("restaurants").doc(resName[i]); {
+      dataRef.set({
         name: resName[i],
         address: resAddr[i],
         website: resWeb[i],
