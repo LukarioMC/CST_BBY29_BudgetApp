@@ -52,20 +52,20 @@ function populateGenericCards() {
     
     db.collection("combos").limit(3).get() //.orderBy("random")
         .then(allCombos => {
-            console.log("Echo!");
             allCombos.forEach(doc => {
                 const data = doc.data();
                 let comboID = doc.id;           // Gets the combo ID
                 let comboTitle = data.details;  // Gets the combo title
                 let price = data.discountedPrice; 
                 
-                console.log("Echo!");
+                // console.log("Echo!");
                 let comboCardTemplate = document.getElementById("cardTemplate").content.cloneNode(true);
                 comboCardTemplate.querySelector(".card-header").innerText = comboTitle;
                 comboCardTemplate.querySelector(".card").setAttribute("id", comboID);
                 comboCardTemplate.querySelectorAll("a")[0].href = "comboInfo.html?id=" + comboID;
-                // To add in future if we get upload working in time.
-                // comboCardTemplate.querySelector('img').src = `./images/${comboID}.jpg`;
+                if (data.image != null) {
+                    comboCardTemplate.querySelector('img').src = data.image;
+                }
                 
                 containerElement.appendChild(comboCardTemplate);
             });
