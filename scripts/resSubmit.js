@@ -10,8 +10,8 @@ function submitComboInfo() {
     let Restaurant = document.getElementById("restName").value;
     let DiscountCode = document.getElementById("discountCode").value;
     // let Name = document.getElementById("name").value;
-    let RegularPrice = document.getElementById("actualPrice").value;
-    let DiscountPrice = document.getElementById("discountedPrice").value;
+    let RegularPrice = parseFloat(document.getElementById("actualPrice").value);
+    let DiscountPrice = parseFloat(document.getElementById("discountedPrice").value);
     let Details = document.getElementById("details").value;
     let Address = document.getElementById("restAddress").value;
     let Website = document.getElementById("website").value;
