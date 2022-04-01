@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
+:root {
+    --primary: #103900;
+    --secondary: #AA1155;
+    --accent: #7f954b;
+    --white: #F4F3EE;
+}
+
 #appname {
     font-size:50pt;
     font-family: 'Fredoka One', cursive;
@@ -7,6 +14,7 @@
 
 body {
     padding-top: 4.5rem;
+    color: var(--primary)!important;
 }
 
 footer {
@@ -40,6 +48,10 @@ nav span {
     padding: 0px;
 }
 
+#comboButtons .material-icons {
+    color: var(--secondary)!important;
+  }
+
 .material-icons.md-18 {
     font-size: 18px;
 }
@@ -58,4 +70,37 @@ nav span {
 
 .material-icons.white {
     color: #ffffff;
+}
+
+.bg-primary {
+    background-color: var(--primary)!important;
+}
+
+.bg-accent {
+    background-color: var(--accent)!important;
+}
+
+.bg-light {
+    background-color: var(--white)!important;
+}
+
+.text-primary {
+    color: var(--primary)!important;
+}
+
+.text-accent {
+    color: var(--accent)!important;
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.rounded {
+    border-radius: 1rem!important;
+}
+
+#offcanvasNavbar .nav-link {
+    color: var(--primary)!important;
 }

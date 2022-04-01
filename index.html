@@ -38,7 +38,7 @@
   <nav id="navbarPlaceholder"></nav>
 
   <!-- App Name and Greeting -->
-  <div class="px-4 py-3 text-center">
+  <div class="px-4 py-3 text-center text-dark">
     <p id="appname">FUDGET&copy;</p>
     <h2>Welcome, <span id="name-goes-here"></span>!</h2>
   </div>
@@ -46,16 +46,16 @@
   <!-- Combo Recommendations Inserted Here -->
     <div id="comboCardGroup" class="card-group container col-md-8 col-lg-6 flex-column mx-auto">
       <template id="cardTemplate">
-        <div class="card my-2">
-          <h2 class="card-header text-center">Combo Recommendation #1</h2>
-          <h3 class="text-center text-success">$<span class="placeholder">10.00</span></h3>
+        <div class="card rounded p-3 my-2 bg-accent">
+          <h2 class="card-header bg-primary text-white text-center">Combo Recommendation #1</h2>
           <img src="./images/moneyplate.jpg" class="card-img" alt="Photo of Combo Items">
           <div class="card-footer d-grid w-100 p-0">
             <div class="row m-0">
-              <a type="button" class="btn col-6 rounded-0 btn-secondary">More Details</a>
-              <a type="button" class="btn col-6 rounded-0 btn-primary">Show Code</a>
+              <a type="button" class="btn col-6 rounded-0 btn-dark">More Details</a>
+              <a type="button" class="btn col-6 rounded-0 btn-secondary">Show Code</a>
             </div>
           </div>
+          <h3 class="text-center text-primary mt-3 h1">$<span class="placeholder">10.00</span></h3>
         </div>
       </template>
     </div>

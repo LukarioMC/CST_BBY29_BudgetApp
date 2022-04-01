@@ -35,7 +35,7 @@ function createCard(doc) {
   }
   
   let card =
-    `<a href="comboInfo.html?id=${doc.id}" class="card m-lg-5 align-items-center">
+    `<a href="comboInfo.html?id=${doc.id}" class="card m-lg-5 align-items-center bg-accent">
       <div class="square-img" style="background-image: url('${imgUrl}');"></div>
       <div class="col d-flex flex-column p-3">
         <h3 class="combo-name">${currentCombo.details}</h2>

@@ -26,7 +26,7 @@ function submitComboInfo() {
     let Cuisine = document.getElementById("cuisine").value;
     console.log(Restaurant, DiscountCode, RegularPrice, DiscountPrice, Details);
 
-    db.collection("restaurants").add({
+    db.collection("restaurants").doc(Restaurant).update({
         name: Restaurant,
         address: Address,
         website: Website,
