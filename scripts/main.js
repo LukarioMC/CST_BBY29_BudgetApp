@@ -33,10 +33,23 @@ function populateUserCards(userDoc) {
 
     console.log(userBudget);
     if (userBudget > 0) {
-        db.collection("combos").where("discountedPrice", "<", userBudget).get();
-        console.log("Budget was greater than 0!");
+        // Gets Documents where the price is less than the users budget.
+        db.collection("combos").where("discountedPrice", "<", userBudget).get()
+            .then(combos => {
+                let max = combos.size;
+                // generateRandomCardsFromCollection(num, collection)
+                let index1 = Math.floor(Math.random() * max);
+                let index2 = Math.floor(Math.random() * max);
+                let index3 = Math.floor(Math.random() * max);
+                // console.log(combos, index1, index2, index3, max);
+                addCard(combos.docs[index1]);
+                addCard(combos.docs[index2]);
+                addCard(combos.docs[index3]);
+            });
+        console.log("Budget exists and was greater than 0!");
+    } else {
+        populateGenericCards(); // Populate random generic cards. 
     }
-    populateGenericCards(); // Test Call, implement combos from budget later.
 
 }
 
@@ -45,28 +58,36 @@ function populateUserCards(userDoc) {
 // Called when the document is ready and a user isn't logged in.
 //=============================================================================
 function populateGenericCards() {
-    let containerElement = document.getElementById("comboCardGroup");
-    
     db.collection("combos").limit(3).get() //.orderBy("random")
         .then(allCombos => {
             allCombos.forEach(doc => {
-                const data = doc.data();
-                let comboID = doc.id;           // Gets the combo ID
-                let comboTitle = data.details;  // Gets the combo title
-                let price = data.discountedPrice.toFixed(2); 
-                
-                let comboCardTemplate = document.getElementById("cardTemplate").content.cloneNode(true);
-                comboCardTemplate.querySelector(".card-header").innerText = comboTitle;
-                comboCardTemplate.querySelector(".card .placeholder").innerText = price;
-                comboCardTemplate.querySelector(".card").setAttribute("id", comboID);
-                comboCardTemplate.querySelectorAll("a")[0].href = "comboInfo.html?id=" + comboID;
-                if (data.image != null) {
-                    comboCardTemplate.querySelector('img').src = data.image;
-                }
-                
-                containerElement.appendChild(comboCardTemplate);
+                addCard(doc);
             });
         });
+}
+
+//=============================================================================
+// Creates a combo card on the page from the provided document.
+//=============================================================================
+function addCard(doc) {
+    docData = doc.data();
+    console.log(docData);
+    let containerElement = document.getElementById("comboCardGroup");
+    
+    let comboID = doc.id;
+    let comboTitle = docData.details;  // Gets the combo title
+    let price = docData.discountedPrice.toFixed(2);
+
+    let comboCardTemplate = document.getElementById("cardTemplate").content.cloneNode(true);
+    comboCardTemplate.querySelector(".card-header").innerText = comboTitle;
+    comboCardTemplate.querySelector(".card .placeholder").innerText = price;
+    comboCardTemplate.querySelector(".card").setAttribute("id", comboID);
+    comboCardTemplate.querySelectorAll("a")[0].href = "comboInfo.html?id=" + comboID;
+    if (docData.image != null) {
+        comboCardTemplate.querySelector('img').src = docData.image;
+    }
+                
+    containerElement.appendChild(comboCardTemplate);
 }
 
 
