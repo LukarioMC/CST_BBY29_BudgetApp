@@ -92,9 +92,23 @@ nav span {
     color: var(--accent)!important;
 }
 
-.btn-secondary {
-    background-color: var(--secondary);
-    border-color: var(--secondary);
+.btn-secondary, .btn-secondary:hover, .btn-secondary:active, .bg-secondary:visited {
+    background-color: var(--secondary)!important;
+    border-color: var(--secondary)!important;
+}
+
+.btn-secondary:hover {
+    filter: brightness(75%);
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .bg-primary:visited {
+    background-color: var(--primary)!important;
+    border-color: var(--primary)!important;
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    filter: brightness(125%);
 }
 
 .rounded {

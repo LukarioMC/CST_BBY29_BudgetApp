@@ -70,7 +70,6 @@ function saveUserInfo() {
   userSubEmail = document.getElementById('subEmailInput').value;
   userPhone = document.getElementById('phoneInput').value;
   userBudget = document.getElementById('budgetInput').value;
-  console.log(userBudget + " Hererere");
   currentUser.update({
       name: userName,
       email: userEmail,
