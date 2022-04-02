@@ -15,10 +15,11 @@ function populateInfo() {
       //get the document for current user.
       currentUser.get().then(userDoc => {
           //get the data fields of the user
-          var userName = userDoc.data().name;
-          var userEmail = userDoc.data().email;
-          var userSubEmail = userDoc.data().subemail;
-          var userPhone = userDoc.data().phone;
+          let userName = userDoc.data().name;
+          let userEmail = userDoc.data().email;
+          let userSubEmail = userDoc.data().subemail;
+          let userPhone = userDoc.data().phone;
+          let userBudget = userDoc.data().budget;
           console.log(userEmail);
           //if the data fields are not empty, then write them in to the form.
           if (userName != null) {
@@ -32,6 +33,13 @@ function populateInfo() {
           }
           if (userPhone != null) {
             document.getElementById("phoneInput").value = userPhone;
+          }
+          if (userBudget != null) {
+            document.querySelectorAll("#budgetInput>option").forEach(option => {
+              if(option.value == userBudget) {
+                option.setAttribute("selected", "true");
+              }
+            });
           }
         });
     } else {
@@ -61,11 +69,14 @@ function saveUserInfo() {
   // Secondary email allowed to be edited to avoid the "reset login" authentication process.
   userSubEmail = document.getElementById('subEmailInput').value;
   userPhone = document.getElementById('phoneInput').value;
+  userBudget = document.getElementById('budgetInput').value;
+  console.log(userBudget + " Hererere");
   currentUser.update({
       name: userName,
       email: userEmail,
       subemail: userSubEmail,
-      phone: userPhone
+      phone: userPhone,
+      budget: userBudget
     })
     .then(() => {
       console.log("Document successfully updated!");
