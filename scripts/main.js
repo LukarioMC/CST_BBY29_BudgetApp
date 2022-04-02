@@ -37,16 +37,9 @@ function populateUserCards(userDoc) {
         db.collection("combos").where("discountedPrice", "<", userBudget).get()
             .then(combos => {
                 let max = combos.size;
-                // generateRandomCardsFromCollection(num, collection)
-                let index1 = Math.floor(Math.random() * max);
-                let index2 = Math.floor(Math.random() * max);
-                let index3 = Math.floor(Math.random() * max);
-                // console.log(combos, index1, index2, index3, max);
-                addCard(combos.docs[index1]);
-                addCard(combos.docs[index2]);
-                addCard(combos.docs[index3]);
+                generateRandomCardsFromCollection(3, combos);
             });
-        console.log("Budget exists and was greater than 0!");
+        console.log("Budget is " + userBudget);
     } else {
         populateGenericCards(); // Populate random generic cards. 
     }
@@ -58,11 +51,9 @@ function populateUserCards(userDoc) {
 // Called when the document is ready and a user isn't logged in.
 //=============================================================================
 function populateGenericCards() {
-    db.collection("combos").limit(3).get() //.orderBy("random")
+    db.collection("combos").get()
         .then(allCombos => {
-            allCombos.forEach(doc => {
-                addCard(doc);
-            });
+            generateRandomCardsFromCollection(3, allCombos);
         });
 }
 
@@ -71,7 +62,7 @@ function populateGenericCards() {
 //=============================================================================
 function addCard(doc) {
     docData = doc.data();
-    console.log(docData);
+    // console.log(docData);
     let containerElement = document.getElementById("comboCardGroup");
     
     let comboID = doc.id;
@@ -88,6 +79,15 @@ function addCard(doc) {
     }
                 
     containerElement.appendChild(comboCardTemplate);
+}
+
+function generateRandomCardsFromCollection(numberOfCards, collection) {
+    let max = collection.size;
+    for (n = 0; n < numberOfCards; n++) {
+        let index = Math.floor(Math.random() * max);
+        // console.log(collection, index, max);
+        addCard(collection.docs[index]);
+    }
 }
 
 
