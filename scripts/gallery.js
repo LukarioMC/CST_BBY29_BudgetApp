@@ -2,8 +2,9 @@
 // Gets the combo documents from the database, then calls the appropriate 
 // function to create the correct cards. (Incomplete, favourites not implemented)
 //=============================================================================
-db.collection("combos").orderBy("discountedPrice").get()
+db.collection("combos").get() //.orderBy("discountedPrice")
   .then(allCombos => {
+    console.log(allCombos);
     firebase.auth().onAuthStateChanged(function (user) {
       let urlParams = new URLSearchParams(window.location.search);
       if (user && urlParams.get("id") == user.uid) {
@@ -35,14 +36,17 @@ function createCard(doc) {
   }
   
   let card =
-    `<a href="comboInfo.html?id=${doc.id}" class="card m-lg-5 align-items-center bg-accent">
+    `<a href="comboInfo.html?id=${doc.id}" class="card d-grid m-lg-5 align-items-center bg-accent mt-1"
+        style="grid-template-columns: 30vw 1fr;">
       <div class="square-img" style="background-image: url('${imgUrl}');"></div>
-      <div class="col d-flex flex-column p-3">
-        <h3 class="combo-name">${currentCombo.details}</h2>
-        <p>${currentCombo.restaurant}</p>
-      </div>
-      <div class="col text-end px-4">
-        <h3 class="combo-price text-success">$${currentCombo.discountedPrice.toFixed(2)}</h2>
+      <div class="d-flex flex-grow-1 align-items-center">
+        <div class="flex-column mx-3 text-dark">
+          <h3 class="combo-name">${currentCombo.details}</h2>
+          <p>${currentCombo.restaurant}</p>
+        </div>
+        <div class="ms-auto px-4">
+          <h3 class="combo-price text-primary text-decoration-underline">$${currentCombo.discountedPrice.toFixed(2)}</h2>
+        </div>
       </div>
     </a>`;
   document.getElementById("comboGallery").innerHTML += card;

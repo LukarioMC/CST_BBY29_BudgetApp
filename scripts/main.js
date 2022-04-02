@@ -34,7 +34,7 @@ function populateUserCards(userDoc) {
     console.log(userBudget);
     if (userBudget > 0) {
         // Gets Documents where the price is less than the users budget.
-        db.collection("combos").where("discountedPrice", "<", userBudget).get()
+        db.collection("combos").get() //.where("discountedPrice", "<", userBudget)
             .then(combos => {
                 let max = combos.size;
                 generateRandomCardsFromCollection(3, combos);
@@ -61,6 +61,7 @@ function populateGenericCards() {
 // Creates a combo card on the page from the provided document.
 //=============================================================================
 function addCard(doc) {
+    console.log(doc);
     docData = doc.data();
     // console.log(docData);
     let containerElement = document.getElementById("comboCardGroup");
@@ -84,9 +85,11 @@ function addCard(doc) {
 function generateRandomCardsFromCollection(numberOfCards, collection) {
     let max = collection.size;
     for (n = 0; n < numberOfCards; n++) {
-        let index = Math.floor(Math.random() * max);
-        // console.log(collection, index, max);
-        addCard(collection.docs[index]);
+        if (max != 0) {
+            let index = Math.floor(Math.random() * max);
+            console.log(collection, index, max);
+            addCard(collection.docs[index]);
+        }
     }
 }
 

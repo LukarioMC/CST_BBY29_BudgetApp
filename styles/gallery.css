@@ -1,3 +1,7 @@
 #comboGallery a {
   border: 2px solid var(--primary)!important;
 }
+
+#comboGallery a:hover, a:active {
+  filter: brightness(110%);
+}
