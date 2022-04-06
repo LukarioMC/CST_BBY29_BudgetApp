@@ -1,6 +1,6 @@
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
-var landingPage = "index.html";
+var landingPage = "landing.html";
 
 var uiConfig = {
   callbacks: {

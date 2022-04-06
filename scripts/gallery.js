@@ -2,7 +2,7 @@
 // Gets the combo documents from the database, then calls the appropriate 
 // function to create the correct cards. (Incomplete, favourites not implemented)
 //=============================================================================
-db.collection("combos").get() //.orderBy("discountedPrice")
+db.collection("combos").orderBy("discountedPrice").get()
   .then(allCombos => {
     console.log(allCombos);
     firebase.auth().onAuthStateChanged(function (user) {
