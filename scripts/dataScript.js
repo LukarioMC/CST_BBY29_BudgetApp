@@ -1,43 +1,7 @@
-// Generates dummy raw data of restaurants.
-// Writes the data into Firebase. 
-
-/*
-Data Structure for reference
-
-“name” : “{Combo Name}”
-    “details” : “{Description of combo}”
-    “cuisine” : “{Style of cuisine}”
-    “restaurant” : “{restaurantID}”
-    “discountCode” : {Restaurants provided code}
-    “actualPrice” : {Price user WOULD have paid}
-    “discountedPrice” : {Price user pays}
-    “discountRatio” : {Ratio of discount, calculated when restaurant submits}
-    “comments”
-      {user’s UID}
-        “name” : “{User’s name}”
-        “rating” : “{Rating}”
-        “comment” : “{Comment content}”
-        “timestamp” : “{Timestamp}”
-users
-  {userID}
-    “name” : “{Users name}”
-    “email” : “{Users email}”
-    "subemail" : "{Users subemail}"
-    "phone" : "{Users phone}"
-    “budget” : {Given budget}"
-    “combo1” : “{Generated combo code}”
-    “combo2” : “{Generated combo code}”
-    “combo3” : “{Generated combo code}”
-    “lastUpdated” : {Time stamp}
-    “favorites” : [ {Array of combo codes} ]
-
-restaurants
-  {restaurantID}
-    “name” : “{Restaurant Name}”
-    “address” : “{Restaurant Address}”
-    “website” : “{Restaurant Website}”
-    “telephone” : “{Phone Number}”
-*/
+// =============================================================================
+// Generates dummy raw data of restaurants
+// functions to generate the data, write into the Firebase
+// =============================================================================
 
 let details = [];
 let cuisine = [];
@@ -50,7 +14,6 @@ let discountRatio = [];
 let actualPrice = [];
 let discountedPrice = [];
 let comboName = [];
-
 let detailsDB = [
   'Ramen',
   'Sandwitch',
@@ -116,7 +79,6 @@ let resTelDB = [
   '(778)477-6654'
 ]
 
-// To be updated.
 let resWebDB = [
   'https://www.aaaa.com/',
   'https://www.bbbb.com/',
@@ -185,6 +147,9 @@ let comboNameDB = [
 let arr = [];
 let arrDB = [];
 
+// =============================================================================
+// Shuffle function for the data
+// =============================================================================
 function shuffle(arr, arrDB) {
   let j = arrDB.length;
   for (let i = 0; i < j; i += 1) {
@@ -194,6 +159,9 @@ function shuffle(arr, arrDB) {
   }
 }
 
+// =============================================================================
+// Shuffles for generation the dummy raw data of restaurants
+// =============================================================================
 function dataGeneration() {
   shuffle(details, detailsDB);
   shuffle(cuisine, cuisineDB);
@@ -205,40 +173,35 @@ function dataGeneration() {
   shuffle(actualPrice, actualPriceDB);
   shuffle(discountRatio, discountRatioDB);
   shuffle(comboName, comboNameDB);
-  // discounted price
   j = actualPrice.length;
   for (let i = 0; i < j; i += 1) {
     let discounted = actualPrice[i] * discountRatio[i];
     discountedPrice.push(actualPrice[i] - discounted);
   }
-  console.log(resName);
-  console.log(discountCode);
-  console.log(cuisine);
-  console.log(discountRatio);
-  console.log(actualPrice);
-  console.log(discountedPrice);
 }
 
-// writeComboData
-// writes information into Firebase like below.
-// combos -> UID -> data
+// =============================================================================
+// Writes the combo data information into the Firebase
+// =============================================================================
 function writeComboData() {
   for (let i = 0; i < resName.length; i += 1) {
     var dataRef = db.collection("combos"); {
-      // var dataRef2 = db.collection("combo").doc().collection(comboName[i]); {
-      dataRef.add({
-        details: details[i],
-        cuisine: cuisine[i],
-        restaurant: resName[i],
-        discountCode: discountCode[i],
-        actualPrice: actualPrice[i],
-        discountedPrice: discountedPrice[i],
-        discountRatio: discountRatio[i],
-      });
+        dataRef.add({
+          details: details[i],
+          cuisine: cuisine[i],
+          restaurant: resName[i],
+          discountCode: discountCode[i],
+          actualPrice: actualPrice[i],
+          discountedPrice: discountedPrice[i],
+          discountRatio: discountRatio[i],
+        });
+      }
     }
   }
-}
-
+  
+  // =============================================================================
+  // Writes the restaurant data information into the Firebase
+  // =============================================================================
 function writeResData() {
   for (let i = 0; i < resName.length; i += 1) {
     var dataRef = db.collection("restaurants").doc(resName[i]); {
