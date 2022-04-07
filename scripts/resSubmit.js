@@ -26,12 +26,12 @@ function submitComboInfo() {
     let Cuisine = document.getElementById("cuisine").value;
     console.log(Restaurant, DiscountCode, RegularPrice, DiscountPrice, Details);
 
-    db.collection("restaurants").doc(Restaurant).update({
+    db.collection("restaurants").doc(Restaurant).set({
         name: Restaurant,
         address: Address,
         website: Website,
         telephone: Telephone
-    });
+    }, { merge: true }); // Merge is temporary until restaurant management is added.
 
     db.collection("combos").add({
         details: Details,
