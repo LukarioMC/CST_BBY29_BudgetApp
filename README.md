@@ -1,18 +1,21 @@
-## My Web Application (Add your Title here)
+## FUDGET - A Budget-friendly Combo Recommendation App
 
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Contents](#content)
 
 ## General Info
-This browser based web application to ...
+This is a browser based web application to recommend users randomized food combos based on their budget, saving them 
+time and money. 
 	
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
 * JavaScript
+* Jquery
 * Bootstrap 
-* ...
+* Firebase Authentication
+* Firebase Storage
 	
 ## Content
 Content of the project folder:
@@ -20,7 +23,7 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
+├── landing.html               # landing HTML file, this is what users see when they are logged in.
 └── README.md
 
 It has the following subfolders and files:
