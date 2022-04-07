@@ -22,9 +22,6 @@ function updateComboInfo() {
       document.getElementById('restaurantInfoPlaceholder').innerHTML = restaurant;
       if(comboData.image != null) {
         document.getElementById('comboImage').src = comboData.image;
-        console.log(comboData.image);
-      } else {
-        console.log(comboData.image);
       }
       
       console.log("Restaurant:", restaurant);
