@@ -1,5 +1,5 @@
 //=============================================================================
-// On page load, prevent default form submission and handle it ourselves.
+// On page load, prevent default combo form submission and handle it ourselves.
 //=============================================================================
 $("document").ready(() => {
     $("#comboForm").submit(e => {
@@ -13,7 +13,7 @@ $("document").ready(() => {
 // form is filled with required fields, and submitted.
 //=============================================================================
 function submitComboInfo() {
-    // console.log("in");
+    // Get the values from the form
     let Restaurant = document.getElementById("restName").value;
     let DiscountCode = document.getElementById("discountCode").value;
     // let Name = document.getElementById("name").value;
@@ -24,8 +24,11 @@ function submitComboInfo() {
     let Website = document.getElementById("website").value;
     let Telephone = document.getElementById("telephone").value;
     let Cuisine = document.getElementById("cuisine").value;
+    
     console.log(Restaurant, DiscountCode, RegularPrice, DiscountPrice, Details);
 
+    // Update the restaurant this combo is associated with.
+    // TODO Restaurant management interface
     db.collection("restaurants").doc(Restaurant).set({
         name: Restaurant,
         address: Address,
@@ -33,6 +36,7 @@ function submitComboInfo() {
         telephone: Telephone
     }, { merge: true }); // Merge is temporary until restaurant management is added.
 
+    // Add combo to the database.
     db.collection("combos").add({
         details: Details,
         cuisine: Cuisine,
@@ -41,7 +45,7 @@ function submitComboInfo() {
         actualPrice: RegularPrice,
         discountedPrice: DiscountPrice,
         discountRatio: RegularPrice / DiscountPrice
-    }).then( doc => {
+    }).then(doc => {
         // Finally, upload the combo image
         uploadComboImage(doc.id);
     });
@@ -55,7 +59,7 @@ function submitComboInfo() {
 function clickUpload() {
     // Get the current reference
     let storageRef = firebase.storage().ref("/image/");
-    
+
     let uploadElement = document.getElementById("picUpload");
     let fileBlob = uploadElement.files[0];
     let fileRef = storageRef.child(fileBlob.name);
@@ -63,7 +67,7 @@ function clickUpload() {
     console.log(fileRef.name + " will be uploaded.");
 
     fileRef.put(fileBlob).then(() => {
-        console.log("Yay!");
+        alert("Image uploaded, yay!");  // TODO Add on-screen dialogue alert box
     });
 }
 
@@ -86,7 +90,7 @@ function uploadComboImage(comboID) {
         console.log(fileRef.name + " was uploaded!");
         fileRef.getDownloadURL()
             // Get URL of the uploaded file
-            .then(function (url) { 
+            .then(function (url) {
                 // Save the URL into users collection
                 db.collection("combos").doc(comboID).update({
                     "image": url

@@ -186,22 +186,22 @@ function dataGeneration() {
 function writeComboData() {
   for (let i = 0; i < resName.length; i += 1) {
     var dataRef = db.collection("combos"); {
-        dataRef.add({
-          details: details[i],
-          cuisine: cuisine[i],
-          restaurant: resName[i],
-          discountCode: discountCode[i],
-          actualPrice: actualPrice[i],
-          discountedPrice: discountedPrice[i],
-          discountRatio: discountRatio[i],
-        });
-      }
+      dataRef.add({
+        details: details[i],
+        cuisine: cuisine[i],
+        restaurant: resName[i],
+        discountCode: discountCode[i],
+        actualPrice: actualPrice[i],
+        discountedPrice: discountedPrice[i],
+        discountRatio: discountRatio[i],
+      });
     }
   }
-  
-  // =============================================================================
-  // Writes the restaurant data information into the Firebase
-  // =============================================================================
+}
+
+// =============================================================================
+// Writes the restaurant data information into the Firebase
+// =============================================================================
 function writeResData() {
   for (let i = 0; i < resName.length; i += 1) {
     var dataRef = db.collection("restaurants").doc(resName[i]); {

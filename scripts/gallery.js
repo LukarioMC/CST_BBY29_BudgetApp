@@ -2,18 +2,18 @@
 // Gets the combo documents from the database, then calls the appropriate 
 // function to create the correct cards. (Incomplete, favourites not implemented)
 //=============================================================================
-db.collection("combos").orderBy("discountedPrice").get()
+db.collection("combos").orderBy("discountedPrice").get()  // Gets the list of combos sorted by price
   .then(allCombos => {
     console.log(allCombos);
     firebase.auth().onAuthStateChanged(function (user) {
       let urlParams = new URLSearchParams(window.location.search);
       if (user && urlParams.get("id") == user.uid) {
         // User is signed in and was properly directed.
-        
-        // TODO Get users favourite combos
+        // TODO Remove following call and get the users favourite combos.
         allCombos.forEach(doc => {
           createCard(doc);
         });
+
       } else {
         // No user is signed in. Get all combo documents.
         allCombos.forEach(doc => {
@@ -34,7 +34,7 @@ function createCard(doc) {
   if (currentCombo.image != null) {
     imgUrl = currentCombo.image;
   }
-  
+
   let card =
     `<a href="comboInfo.html?id=${doc.id}" class="card d-grid m-lg-5 align-items-center bg-accent mt-1"
         style="grid-template-columns: 30vw 1fr;">

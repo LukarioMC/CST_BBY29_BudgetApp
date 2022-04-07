@@ -2,12 +2,12 @@
 // Calls these functions once the document is ready and fully loaded.
 // Insert functions relating to the state of the currently logged in user below.
 //=============================================================================
-ready(function() {
+ready(function () {
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
         if (user) {
             let userDocRef = db.collection("users").doc(user.uid);
-            
+
             // Get the document for the currently logged in users from firestore.
             userDocRef.get().then(userDoc => {
                 $("#name-goes-here").text(userDoc.data().name); // Insert name
@@ -15,7 +15,6 @@ ready(function() {
             });
         } else {
             // No user is signed in
-            
             // hideWelcome();
             populateGenericCards();
         }
@@ -65,7 +64,7 @@ function addCard(doc) {
     docData = doc.data();
     // console.log(docData);
     let containerElement = document.getElementById("comboCardGroup");
-    
+
     let comboID = doc.id;
     let comboTitle = docData.details;  // Gets the combo title
     let price = docData.discountedPrice.toFixed(2);
@@ -78,7 +77,7 @@ function addCard(doc) {
     if (docData.image != null) {
         comboCardTemplate.querySelector('img').src = docData.image;
     }
-                
+
     containerElement.appendChild(comboCardTemplate);
 }
 

@@ -22,7 +22,7 @@ var uiConfig = {
         db.collection("users").doc(user.uid).set({    // Write to firestore. We are using the users' UID for the document name.
           name: user.displayName,                     // Sets the name in the DB to the users display name from auth
           email: user.email,
-          budget: 50.0
+          budget: 50.0                                // Set the user budget to a reasonable default
         }).then(function () {
           console.log("New user added to firestore");
           window.location.href = landingPage;         // Redirect to the landing page AFTER the database has been updated.
@@ -59,4 +59,5 @@ var uiConfig = {
   privacyPolicyUrl: '<your-privacy-policy-url>'
 };
 
+// Creates the container for firebase UI authentication.
 ui.start('#firebaseui-auth-container', uiConfig);

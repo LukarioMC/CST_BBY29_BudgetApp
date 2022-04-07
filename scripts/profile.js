@@ -14,34 +14,34 @@ function populateInfo() {
       currentUser = db.collection("users").doc(user.uid)
       //get the document for current user.
       currentUser.get().then(userDoc => {
-          //get the data fields of the user
-          let userName = userDoc.data().name;
-          let userEmail = userDoc.data().email;
-          let userSubEmail = userDoc.data().subemail;
-          let userPhone = userDoc.data().phone;
-          let userBudget = userDoc.data().budget;
-          console.log(userEmail);
-          //if the data fields are not empty, then write them in to the form.
-          if (userName != null) {
-            document.getElementById("nameInput").value = userName;
-          }
-          if (userEmail != null) {
-            document.getElementById("emailInput").value = userEmail;
-          }
-          if (userSubEmail != null) {
-            document.getElementById("subEmailInput").value = userSubEmail;
-          }
-          if (userPhone != null) {
-            document.getElementById("phoneInput").value = userPhone;
-          }
-          if (userBudget != null) {
-            document.querySelectorAll("#budgetInput>option").forEach(option => {
-              if(option.value == userBudget) {
-                option.setAttribute("selected", "true");
-              }
-            });
-          }
-        });
+        //get the data fields of the user
+        let userName = userDoc.data().name;
+        let userEmail = userDoc.data().email;
+        let userSubEmail = userDoc.data().subemail;
+        let userPhone = userDoc.data().phone;
+        let userBudget = userDoc.data().budget;
+        console.log(userEmail);
+        //if the data fields are not empty, then write them in to the form.
+        if (userName != null) {
+          document.getElementById("nameInput").value = userName;
+        }
+        if (userEmail != null) {
+          document.getElementById("emailInput").value = userEmail;
+        }
+        if (userSubEmail != null) {
+          document.getElementById("subEmailInput").value = userSubEmail;
+        }
+        if (userPhone != null) {
+          document.getElementById("phoneInput").value = userPhone;
+        }
+        if (userBudget != null) {
+          document.querySelectorAll("#budgetInput>option").forEach(option => {
+            if (option.value == userBudget) {
+              option.setAttribute("selected", "true");
+            }
+          });
+        }
+      });
     } else {
       // No user is signed in.
       console.log("No user is signed in");
@@ -71,14 +71,13 @@ function saveUserInfo() {
   userPhone = document.getElementById('phoneInput').value;
   userBudget = document.getElementById('budgetInput').value;
   currentUser.update({
-      name: userName,
-      email: userEmail,
-      subemail: userSubEmail,
-      phone: userPhone,
-      budget: userBudget
-    })
-    .then(() => {
-      console.log("Document successfully updated!");
-    })
+    name: userName,
+    email: userEmail,
+    subemail: userSubEmail,
+    phone: userPhone,
+    budget: userBudget
+  }).then(() => {
+    console.log("Document successfully updated!");
+  })
   document.getElementById('personalInfoFields').disabled = true;
 }
