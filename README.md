@@ -23,7 +23,14 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── landing.html               # landing HTML file, this is what users see when they are logged in.
+├── 404.html                 # Generated 404 page
+├── comboGallery.html        # Combo gallery page HTML file
+├── comboInfo.html           # Individual combo page HTML file
+├── comment.html             # Comment page
+├── landing.html             # landing HTML file, this is what users see when they are logged in.
+├── profile.html             # Users profile and budget page
+├── submit.html              # Restaurant combo submission page
+├── template.html            # template HTML file
 └── README.md
 
 It has the following subfolders and files:
