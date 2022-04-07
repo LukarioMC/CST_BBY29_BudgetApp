@@ -21,7 +21,8 @@ var uiConfig = {
         console.log("Was a new user");
         db.collection("users").doc(user.uid).set({    // Write to firestore. We are using the users' UID for the document name.
           name: user.displayName,                     // Sets the name in the DB to the users display name from auth
-          email: user.email
+          email: user.email,
+          budget: 50.0
         }).then(function () {
           console.log("New user added to firestore");
           window.location.href = landingPage;         // Redirect to the landing page AFTER the database has been updated.

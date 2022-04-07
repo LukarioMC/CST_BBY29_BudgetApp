@@ -29,7 +29,7 @@ ready(function() {
 function populateUserCards(userDoc) {
     let comboCardTemplate = document.getElementById("comboInfo");
     let comboCardGroup = document.getElementById("comboCardGroup");
-    var userBudget = parseInt(userDoc.data().budget);
+    var userBudget = parseFloat(userDoc.data().budget);
 
     console.log(userBudget);
     if (userBudget > 0) {
