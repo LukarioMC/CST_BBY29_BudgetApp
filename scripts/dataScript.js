@@ -3,6 +3,7 @@
 // functions to generate the data, write into the Firebase
 // =============================================================================
 
+// Below variables and literals are dummy data.
 let details = [];
 let cuisine = [];
 let resName = [];
@@ -173,7 +174,7 @@ function dataGeneration() {
   shuffle(actualPrice, actualPriceDB);
   shuffle(discountRatio, discountRatioDB);
   shuffle(comboName, comboNameDB);
-  j = actualPrice.length;
+  j = actualPrice.length;   // After the generation, actual prices are calculated in here
   for (let i = 0; i < j; i += 1) {
     let discounted = actualPrice[i] * discountRatio[i];
     discountedPrice.push(actualPrice[i] - discounted);
@@ -205,7 +206,7 @@ function writeComboData() {
 function writeResData() {
   for (let i = 0; i < resName.length; i += 1) {
     var dataRef = db.collection("restaurants").doc(resName[i]); {
-      dataRef.set({
+      dataRef.set({       // Writing the restaurant information into document area instead of collection for ease of reading
         name: resName[i],
         address: resAddr[i],
         website: resWeb[i],
